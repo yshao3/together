@@ -1,88 +1,136 @@
-/**
- * Created by Chuhan on 4/14/18.
+/*
+ * Created by Yijun on 4/14/18.
  */
 var app = require("../../express");
 var mysql = require('mysql');
 var con = mysql.createConnection({
     host: "localhost",
-    user: "yourusername",
-    password: "yourpassword"
+    user: "root",
+    password: "1234",
+    database : "QMPS"
 });
 
 
-module.exports = function(config) {
-    this.config = config;
+var web = function () {};
+// database.prototype.getLatcoByDate = function(date) {
+//         con.connect(function(err) {
+//             if (err) throw err;
+//             console.log("Connected!");
+//             console.log(date);
+//             con.query("select * from cleanliness_fact", function (err, result) {
+//                 // if (err) throw err;
+//                 if (err) callback(err,null);
+//                 else callback(null,result);
+//                 // console.log("Result: " + result);
+//                 // console.log(setValue(result));
+//                 // return result;
+//             });
+//             // return null;
+//         });
+//     };
+web.prototype.get_Teat = function(date1, date2, callback){
+    let sql = "select * from cleanliness_fact where DATE(date) between ? and ? ";
+    console.log(date1);
+    var result = [];
+    con.query(sql, [date1, date2],function(err, res){
+        if (err) return callback(err);
+        if (res.length){
+            for (var i = 0; i < res.length; i++){
+                result.push(res[i]);
+            }
+        }
+        callback(null, result);
+    });
 
-    // create a new latco instance in database
-    this.createLatco = function(latco) {
-        con.connect(function(err) {
-            if (err) throw err;
-            console.log("Connected!");
-            con.query(sql, function (err, result) {
-                if (err) throw err;
-                console.log("Result: " + result);
-            });
-        });
-    };
+}
+// database.prototype.get_Teat = function(date, callback){
+//     let sql = "select * from cleanliness_fact where date = ?";
+//     console.log(date);
+//     var result = [];
+//     con.query(sql, [date],function(err, res){
+//         if (err) return callback(err);
+//         if (res.length){
+//             for (var i = 0; i < res.length; i++){
+//                 result.push(res[i]);
+//             }
+//         }
+//         callback(null, result);
+//     });
 
-    // get a latco instance by date from database
-    this.getLatcoByDate = function(date) {
-        con.connect(function(err) {
-            if (err) throw err;
-            console.log("Connected!");
-            con.query(sql, function (err, result) {
-                if (err) throw err;
-                console.log("Result: " + result);
-            });
-        });
-    };
+// }
+// database.prototype.get_Teat = function(date, callback){
+//     let sql = "select * from cleanliness_fact where date = ?";
+//     console.log(date);
+//     var result = [];
+//     con.query(sql, [date],function(err, res){
+//         if (err) return callback(err);
+//         if (res.length){
+//             for (var i = 0; i < res.length; i++){
+//                 result.push(res[i]);
+//             }
+//         }
+//         callback(null, result);
+//     });
 
-    this.createPostmilk = function(postmilk) {
-        con.connect(function(err) {
-            if (err) throw err;
-            console.log("Connected!");
-            con.query(sql, function (err, result) {
-                if (err) throw err;
-                console.log("Result: " + result);
-            });
-        });
-    };
+// }
+// database.prototype.get_Teat = function(date, callback){
+//     let sql = "select * from cleanliness_fact where date = ?";
+//     console.log(date);
+//     var result = [];
+//     con.query(sql, [date],function(err, res){
+//         if (err) return callback(err);
+//         if (res.length){
+//             for (var i = 0; i < res.length; i++){
+//                 result.push(res[i]);
+//             }
+//         }
+//         callback(null, result);
+//     });
 
-    // get a Postmilk instance by date from database
-    this.getPostmilkByDate = function(date) {
-        con.connect(function(err) {
-            if (err) throw err;
-            console.log("Connected!");
-            con.query(sql, function (err, result) {
-                if (err) throw err;
-                console.log("Result: " + result);
-            });
-        });
-    };
+// }
+// database.prototype.get_Teat = function(date, callback){
+//     let sql = "select * from cleanliness_fact where date = ?";
+//     console.log(date);
+//     var result = [];
+//     con.query(sql, [date],function(err, res){
+//         if (err) return callback(err);
+//         if (res.length){
+//             for (var i = 0; i < res.length; i++){
+//                 result.push(res[i]);
+//             }
+//         }
+//         callback(null, result);
+//     });
 
-    this.createStrip = function(strip) {
-        con.connect(function(err) {
-            if (err) throw err;
-            console.log("Connected!");
-            con.query(sql, function (err, result) {
-                if (err) throw err;
-                console.log("Result: " + result);
-            });
-        });
-    };
+// }
+// database.prototype.get_Teat = function(date, callback){
+//     let sql = "select * from cleanliness_fact where date = ?";
+//     console.log(date);
+//     var result = [];
+//     con.query(sql, [date],function(err, res){
+//         if (err) return callback(err);
+//         if (res.length){
+//             for (var i = 0; i < res.length; i++){
+//                 result.push(res[i]);
+//             }
+//         }
+//         callback(null, result);
+//     });
 
-    // get a Strip instance by date from database
-    this.getStripByDate = function(date) {
-        con.connect(function(err) {
-            if (err) throw err;
-            console.log("Connected!");
-            con.query(sql, function (err, result) {
-                if (err) throw err;
-                console.log("Result: " + result);
-            });
-        });
-    };
-    return this;
-};
+// }
+// database.prototype.get_Teat = function(date, callback){
+//     let sql = "select * from cleanliness_fact where date = ?";
+//     console.log(date);
+//     var result = [];
+//     con.query(sql, [date],function(err, res){
+//         if (err) return callback(err);
+//         if (res.length){
+//             for (var i = 0; i < res.length; i++){
+//                 result.push(res[i]);
+//             }
+//         }
+//         callback(null, result);
+//     });
 
-
+// }
+module.exports = new web();

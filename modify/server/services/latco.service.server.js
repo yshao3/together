@@ -1,5 +1,5 @@
 /**
- * Created by Chuhan on 4/14/18.
+ * Created by Yijun on 4/14/18.
  */
 var app = require("../../express");
 
@@ -19,19 +19,33 @@ function createLatco(req,res) {
         });
 }
 
-// api url format: /latco?date="+date_value
+// api url format: /latco?date_start="+date_value
 function getLatcoByDate(req,res){
-    var date = req.query.date;
-    database
-        .getLatcoByDate(date)
-        .then(function (latco) {
-            if (latco === null)
-                return res.send("0");
-            else
-                return res.json(latco);
+    var date1 = req.params.date_start;
+    var date2 = req.params.date_end;
+    console.log(date1);
+    database.get_Teat(date1, date2, function(err, teat){
+        if (err){
+            throw err;
+        }
+        console.log(teat);
+        res.json(teat);
+    });
+    // database
+    //     .getLatcoByDate(date)
+    //     .then(
+    //         function (latco) {
+    //         console.log(latco);
+    //         if (latco === null)
+    //             return res.send("0");
+    //         else
+    //             return res.json(latco);
 
-        }, function (err) {
-            return res.sendStatus(404).send(err);
-        });
+    //     }, function (err) {
+    //         console.log(err);
+    //         return res.sendStatus(404).send(err);
+    //     });
 }
+
+
 

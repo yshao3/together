@@ -34,3 +34,4 @@ function getStripByDate(req,res){
             return res.sendStatus(404).send(err);
         });
 }
+
