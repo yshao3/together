@@ -28,11 +28,11 @@ var web = function () {};
 //             // return null;
 //         });
 //     };
-web.prototype.get_Teat = function(date1, date2, callback){
-    let sql = "select * from cleanliness_fact where DATE(date) between ? and ? ";
+web.prototype.get_Teat = function(date1, callback){
+    let sql = "select * from cleanliness_fact where date = ? ";
     console.log(date1);
     var result = [];
-    con.query(sql, [date1, date2],function(err, res){
+    con.query(sql, [date1],function(err, res){
         if (err) return callback(err);
         if (res.length){
             for (var i = 0; i < res.length; i++){

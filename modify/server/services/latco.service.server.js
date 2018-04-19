@@ -19,12 +19,12 @@ function createLatco(req,res) {
         });
 }
 
-// api url format: /latco?date_start="+date_value
+// api url format: /latco?date"+date_value
 function getLatcoByDate(req,res){
-    var date1 = req.params.date_start;
-    var date2 = req.params.date_end;
+    var date1 = req.query.date;
+
     console.log(date1);
-    database.get_Teat(date1, date2, function(err, teat){
+    database.get_Teat(date1, function(err, teat){
         if (err){
             throw err;
         }
