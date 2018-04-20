@@ -4,7 +4,6 @@
 var app = require("../../express");
 
 var database = require("../models/database");
-
 app.post("/strip", createStrip);
 app.get("/strip", getStripByDate);
 
