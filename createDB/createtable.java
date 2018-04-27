@@ -83,10 +83,10 @@ public class createtable{
 				"staff_id varchar(32)," +
 				"date varchar(32)," +
 				"farm_id varchar(32)," +
-				"free integer," +
-				"slightly integer," +
-				"moderate integer," +
-				"heavy integer" +
+				"clean integer," +
+				"slightly_dirt integer," +
+				"moderate_dirt integer," +
+				"cake_on_dirt integer" +
 //				"foreign key(farm_id) references farm(farm_id)," +
 //				"foreign key(staff_id) references staff(staff_id)" +
 				");";
@@ -154,7 +154,7 @@ public class createtable{
 				"farm_id varchar(32)," +
 				"isBefore boolean," +
 				"clean integer," +
-				"deep integer," +
+				"dip_present integer," +
 				"small_dirt integer," +
 				"large_dirt integer" +
 				");";
@@ -163,7 +163,7 @@ public class createtable{
 	}
 	public static void create_lactocoder_fact(Statement s, String name) throws Exception{
 		String query = "create table lactocoder_fact(" +
-				"staff_id varchar(32)," +
+
 				"farm_id varchar(32)," +
 				"parlor_type varchar(32)," +
 				"size integer," +
@@ -174,19 +174,13 @@ public class createtable{
 				"herd_size integer," +
 				"milking_frequency varchar(32)," +
 				"milking_routine varchar(32)," +
-				"dates varchar(32)," +
-				"dip time," +
-				"strip time," +
-				"wipe time," +
-				"attach time," +
-				"remove_ time," +
+				"cow_name varchar(32)," +
+				"date varchar(32)," +
 				"dip_contact_time time," +
 				"lag_contact_stimulate time," +
 				"unit_on_time integer," +
 				"total_milk integer," +
 				"remark long varchar" +
-
-
 				");";
 		s.executeUpdate("Drop table if exists " + name);
 		s.executeUpdate(query);
