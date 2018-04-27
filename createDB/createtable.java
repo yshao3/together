@@ -148,7 +148,6 @@ public class createtable{
 	}
 	public static void create_cleanliness_fact(Statement s, String name) throws Exception{
 		String query = "create table "+name+"("+
-				"group_id varchar(32),"+
 				"staff_id varchar(32)," +
 				"milker_id varchar(32),"+
 				"date varchar(32)," +

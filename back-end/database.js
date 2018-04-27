@@ -138,7 +138,7 @@ database.prototype.get_latco = function(date1,date2,callback){
 }
 // post functions for mobile
 database.prototype.post_teat = function(json, callback){
-    let sql = "insert into cleanliness_fact ( group_id, staff_id, milker_id, " +
+    let sql = "insert into cleanliness_fact ( staff_id, milker_id, " +
                     "date, farm_id, isBefore, clean, deep, small_dirt, large_dirt)" +
                     "values ?";
     var temp = [];
